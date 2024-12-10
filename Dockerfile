@@ -27,4 +27,6 @@ USER ${USER}
 
 EXPOSE 22
 
+USER root
+
 CMD ["./start.sh"]
