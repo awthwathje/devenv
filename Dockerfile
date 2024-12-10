@@ -2,9 +2,8 @@ FROM alpine
 
 ARG USER=devenv
 ARG UID_GID=65022
-ARG APP_DIR=/home/devenv
+ARG HOME_DIR=/home/devenv
 ARG START_SCRIPT=start.sh
-ARG SSH_KEYS_DIR=ssh-host-keys
 ARG SSH_KEYS_CONFIG=99-custom-host-keys.conf
 
 RUN apk update && \
@@ -16,17 +15,17 @@ RUN addgroup -g ${UID_GID} ${USER} && \
 
 ADD ${SSH_KEYS_CONFIG} /etc/ssh/sshd_config.d/${SSH_KEYS_CONFIG}
 
-WORKDIR ${APP_DIR}
+WORKDIR ${HOME_DIR}
 
-ADD ${START_SCRIPT} ./${START_SCRIPT}
-
-RUN chgrp ${USER} ./${START_SCRIPT}
-RUN chmod u-x,g+x,o-x ./${START_SCRIPT}
+RUN chown -R ${USER}:${USER} ${HOME_DIR}/.ssh && \
+    chmod 600 ${HOME_DIR}/.ssh/authorized_keys
 
 USER ${USER}
 
 EXPOSE 22
 
+ADD ${START_SCRIPT} /opt/${START_SCRIPT}
+
 USER root
 
-CMD ["./start.sh"]
+CMD ["/opt/start.sh"]
