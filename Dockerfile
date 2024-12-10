@@ -17,7 +17,8 @@ ADD ${SSH_KEYS_CONFIG} /etc/ssh/sshd_config.d/${SSH_KEYS_CONFIG}
 
 WORKDIR ${HOME_DIR}
 
-RUN chown -R ${USER}:${USER} ${HOME_DIR}/.ssh && \
+RUN mkdir ${HOME_DIR}/.ssh && \
+    chown -R ${USER}:${USER} ${HOME_DIR}/.ssh && \
     chmod 600 ${HOME_DIR}/.ssh/authorized_keys
 
 USER ${USER}
