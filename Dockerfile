@@ -34,8 +34,8 @@ EXPOSE 22
 
 USER root
 
-ADD ${START_SCRIPT} /opt/${START_SCRIPT}
+ADD ${START_SCRIPT} /usr/local/bin/${START_SCRIPT}
 
-RUN chmod u+x /opt/${START_SCRIPT}
+RUN chmod u+x /usr/local/bin/${START_SCRIPT}
 
-CMD ["/opt/start.sh"]
+CMD ["/usr/local/bin/start.sh"]
