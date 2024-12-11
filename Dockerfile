@@ -20,7 +20,8 @@ ADD ${SSHD_KEYS_CONFIG} /etc/ssh/sshd_config.d/${SSHD_KEYS_CONFIG}
 WORKDIR ${HOME_DIR}
 
 RUN mkdir ${HOME_DIR}/.ssh && \
-    chown -R ${USER}:${USER} ${HOME_DIR}/.ssh
+    chown -R ${USER}:${USER} ${HOME_DIR}/.ssh && \
+    chmod 700 ${HOME_DIR}/.ssh
 
 USER ${USER}
 
