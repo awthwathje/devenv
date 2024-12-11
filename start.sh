@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec /usr/sbin/sshd -D -d
+/bin/sh -c "while true; do sleep 30; done"
