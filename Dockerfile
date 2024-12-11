@@ -9,7 +9,7 @@ ARG SSHD_KEYS_CONFIG=99-custom-host-keys.conf
 
 RUN apk update && \
     apk upgrade --no-cache && \
-    apk add --no-cache ca-certificates bash openssh git curl
+    apk add --no-cache ca-certificates bash openssh git curl libstdc++ libgcc
 
 RUN addgroup -g ${UID_GID} ${USER} && \
     adduser -D -G ${USER} -u ${UID_GID} ${USER} && \
