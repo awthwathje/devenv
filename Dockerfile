@@ -28,11 +28,7 @@ RUN mkdir ${HOME_DIR}/.vscode-server && \
     chown -R ${USER}:${USER} ${HOME_DIR}/.vscode-server && \
     chmod 700 ${HOME_DIR}/.vscode-server
 
-USER ${USER}
-
 EXPOSE 22
-
-USER root
 
 ADD ${START_SCRIPT} /usr/local/bin/${START_SCRIPT}
 
