@@ -26,8 +26,10 @@ USER ${USER}
 
 EXPOSE 22
 
+USER root
+
 ADD ${START_SCRIPT} /opt/${START_SCRIPT}
 
-USER root
+RUN chmod u+x /opt/${START_SCRIPT}
 
 CMD ["/opt/start.sh"]
