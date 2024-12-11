@@ -57,7 +57,7 @@ drwxr-xr-x 1 nobody users    4 Dec 11 02:33 ..
 ```
 
 ### Docker mounts
-In the Docker container configuration, specify the mounts as follows. Here in this example it is assumed the files are in the home directory, change this to the actual path.
+In the Docker container configuration, specify the mounts as follows. Here in this example it is assumed the host files are in the home (`~`) directory, change this to the actual path.
 
 | Host Path         | Container Path                    |
 |-------------------|-----------------------------------|
