@@ -30,7 +30,7 @@ The client keys need to be propagated to `authorized_keys` on the Docker host an
 Copy the contents of the public key printed by [Get the client pub key](#get-the-client-pub-key) and save it into `authorized_keys` file.
 
 #### Permissions
-The container adds a `devenv` user with UID and GUID of `65022`. Make sure to use the correct permissions to the persistent files on the Docker host, so the container can access them.
+The Docker image creates `devenv` user with UID and GUID of `65022` to the container. Make sure to use the correct permissions to the persistent files on the Docker host, so the container can access them.
 
 Example listing:
 ```sh
