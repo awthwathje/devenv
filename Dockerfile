@@ -17,6 +17,7 @@ RUN addgroup -g ${UID_GID} ${USER} && \
     adduser -D -G ${USER} -u ${UID_GID} ${USER} && \
     passwd -u ${USER}
 
+
 ADD ${SSHD_MISC_CONFIG} /etc/ssh/sshd_config.d/${SSHD_MISC_CONFIG}
 ADD ${SSHD_KEYS_CONFIG} /etc/ssh/sshd_config.d/${SSHD_KEYS_CONFIG}
 
