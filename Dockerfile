@@ -22,6 +22,8 @@ ADD ${SSHD_KEYS_CONFIG} /etc/ssh/sshd_config.d/${SSHD_KEYS_CONFIG}
 
 WORKDIR ${HOME_DIR}
 
+RUN sed -i 's|^\(${USER}:[^:]*:[^:]*:[^:]*:[^:]*:[^:]*:\)/bin/sh|\1/bin/zsh|' /etc/passwd
+
 RUN mkdir ${SSH_DIR} && \
     chown -R ${USER}:${USER} ${SSH_DIR} && \
     chmod 700 ${SSH_DIR}
