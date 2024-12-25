@@ -20,7 +20,7 @@ ADD ${SSHD_KEYS_CONFIG} /etc/ssh/sshd_config.d/${SSHD_KEYS_CONFIG}
 
 WORKDIR ${HOME_DIR}
 
-RUN sed -i 's|^\(${USER}:[^:]*:[^:]*:[^:]*:[^:]*:[^:]*:\)/bin/sh|\1/bin/zsh|' /etc/passwd
+RUN sed -i 's|^\(devenv:[^:]*:[^:]*:[^:]*:[^:]*:[^:]*:\)/bin/sh|\1/bin/zsh|' /etc/passwd
 
 EXPOSE 22
 
