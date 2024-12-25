@@ -67,9 +67,11 @@ drwxr-xr-x 1 nobody users    4 Dec 11 02:33 ..
 
 ### Docker mounts
 
-In the Docker container configuration, specify the mounts as follows. Here in this example it is assumed the host files are in the home directory (`~`), change this to the actual path.
+ Prepare the folders: `~/ssh-host-keys` and `~/home/.ssh/authorized_keys` in the Docker host, and specify the mounts in the Docker container configuration as follows.
 
-| Host Path         | Container Path                    |
-|-------------------|-----------------------------------|
-| ~/ssh-host-keys   | /etc/ssh/ssh-host-keys            |
-| ~/authorized_keys | /home/devenv/.ssh/authorized_keys |
+| Host Path       | Container Path                    |
+|-----------------|-----------------------------------|
+| ~/ssh-host-keys | /etc/ssh/ssh-host-keys            |
+| ~/home          | /home/devenv                      |
+
+This way the whole `/home/devenv`, the home dir of the container's user (`devenv`), will get mounted from the host, so everything specific to that user (settings, keys, workspaces, projects, etc.) will get persisted.
