@@ -43,20 +43,25 @@ The Docker image creates `devenv` user with UID and GUID of `65022` in the conta
 Example listing:
 
 ```sh
-root@docker-host:~# find . -maxdepth 1 -exec ls -al {} +
--rw------- 1  65022 65022 741 Dec 11 02:32 ./authorized_keys
+root@docker-host:~# find . -maxdepth 2 -exec ls -al {} +
+drwxr-xr-x 1 nobody users  4 Dec 25 07:09 .
+drwxrwxrwx 1 nobody users 19 Dec 11 03:37 ..
+drwxr-sr-x 1  65022 65022 11 Dec 25 07:18 home
+drw------- 1 root   root   8 Dec 10 14:41 ssh-host-keys
 
-.:
-total 24
-drwxr-xr-x 1 nobody users   4 Dec 11 02:33 .
-drwxrwxrwx 1 nobody users  20 Dec 11 03:25 ..
--rw------- 1  65022 65022 741 Dec 11 02:32 authorized_keys
-drw------- 1 root   root    8 Dec 10 14:41 ssh-host-keys
+./home:
+drwxr-sr-x 1  65022 65022   11 Dec 25 07:18 .
+drwxr-xr-x 1 nobody users    4 Dec 25 07:09 ..
+drwx------ 1  65022 65022    3 Dec 11 11:43 .ssh
+
+./home/.ssh:
+drwx------ 1 65022 65022   3 Dec 11 11:43 .
+drwxr-sr-x 1 65022 65022  11 Dec 25 07:18 ..
+-rw------- 1 65022 65022 741 Dec 11 02:32 authorized_keys
 
 ./ssh-host-keys:
-total 40
 drw------- 1 root   root     8 Dec 10 14:41 .
-drwxr-xr-x 1 nobody users    4 Dec 11 02:33 ..
+drwxr-xr-x 1 nobody users    4 Dec 25 07:09 ..
 -r-------- 1 root   root   513 Dec 10 13:14 ssh_host_ecdsa_key
 -rw-r--r-- 1 root   root   179 Dec 10 13:14 ssh_host_ecdsa_key.pub
 -r-------- 1 root   root   411 Dec 10 13:14 ssh_host_ed25519_key
