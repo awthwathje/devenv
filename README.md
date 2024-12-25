@@ -23,7 +23,7 @@ Get-Content $env:USERPROFILE\.ssh\id_rsa.pub
 ### Generate server keys
 
 ```sh
-ssh-keygen -A
+ssh-keygen -A 
 ```
 
 #### Store the keys in some directory (to be mounted to the container)
