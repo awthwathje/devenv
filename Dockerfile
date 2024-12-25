@@ -11,7 +11,7 @@ ARG START_SCRIPT=start.sh
 
 RUN apk update && \
     apk upgrade --no-cache && \
-    apk add --no-cache ca-certificates bash openssh git curl libstdc++ libgcc gnupg vim zsh shadow
+    apk add --no-cache ca-certificates bash openssh git curl libstdc++ libgcc gnupg vim zsh
 
 RUN addgroup -g ${UID_GID} ${USER} && \
     adduser -D -G ${USER} -u ${UID_GID} ${USER} && \
@@ -21,8 +21,6 @@ ADD ${SSHD_MISC_CONFIG} /etc/ssh/sshd_config.d/${SSHD_MISC_CONFIG}
 ADD ${SSHD_KEYS_CONFIG} /etc/ssh/sshd_config.d/${SSHD_KEYS_CONFIG}
 
 WORKDIR ${HOME_DIR}
-
-RUN chsh -s /bin/zsh ${USER}
 
 RUN mkdir ${SSH_DIR} && \
     chown -R ${USER}:${USER} ${SSH_DIR} && \
