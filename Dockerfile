@@ -9,7 +9,12 @@ ARG START_SCRIPT=start.sh
 
 RUN apk update && \
     apk upgrade --no-cache && \
-    apk add --no-cache ca-certificates bash openssh git curl libstdc++ libgcc gnupg vim zsh
+    apk add --no-cache \
+        ca-certificates libstdc++ ncurses coreutils make gcc g++ libgcc linux-headers util-linux binutils findutils \
+        openssl openssh gnupg \
+        grep curl git \
+        vim bash zsh \
+        python3
 
 RUN addgroup -g ${UID_GID} ${USER} && \
     adduser -D -G ${USER} -u ${UID_GID} ${USER} && \
