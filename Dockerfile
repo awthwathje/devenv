@@ -8,35 +8,18 @@ ARG HOME_DIR=/home/devenv
 ARG START_SCRIPT=start.sh
 
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \
-    ca-certificates \
-    libstdc++6 \
-    ncurses-bin \
-    coreutils \
-    make \
-    gcc \
-    g++ \
-    libgcc-s1 \
-    util-linux \
-    binutils \
-    findutils \
-    openssl \
-    openssh-server \
-    gnupg \
-    grep \
-    curl \
-    git \
-    vim \
-    bash \
-    zsh \
+    apt-get upgrade --yes && \
+    apt-get install --yes \
+    ca-certificates libstdc++6 ncurses-bin coreutils make gcc g++ libgcc-s1 util-linux binutils findutils \
+    gnupg openssl openssh-server \
+    grep curl git vim bash zsh \
     python3
 
 RUN rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -g ${UID_GID} ${USER} && \
-    useradd -m -u ${UID_GID} -g ${USER} -s /bin/zsh ${USER} && \
-    passwd -d ${USER}
+RUN groupadd --gid ${UID_GID} ${USER} && \
+    useradd --create-home --uid ${UID_GID} --gid ${USER} --shell /bin/zsh ${USER} && \
+    passwd --delete ${USER}
 
 ADD ${SSHD_MISC_CONFIG} /etc/ssh/sshd_config.d/${SSHD_MISC_CONFIG}
 ADD ${SSHD_KEYS_CONFIG} /etc/ssh/sshd_config.d/${SSHD_KEYS_CONFIG}
@@ -50,4 +33,4 @@ RUN chmod u+x /usr/local/bin/${START_SCRIPT}
 
 ENTRYPOINT ["/usr/local/bin/start.sh"]
 
-CMD ["/bin/zsh", "-l"]
+CMD ["/bin/zsh", "--no-log-init"]
