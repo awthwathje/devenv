@@ -18,7 +18,6 @@ RUN apt-get update && \
     gcc \
     g++ \
     libgcc-s1 \
-    linux-headers-amd64 \
     util-linux \
     binutils \
     findutils \
@@ -31,8 +30,9 @@ RUN apt-get update && \
     vim \
     bash \
     zsh \
-    python3 && \
-    rm -rf /var/lib/apt/lists/*
+    python3
+
+RUN rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g ${UID_GID} ${USER} && \
     useradd -m -u ${UID_GID} -g ${USER} -s /bin/zsh ${USER} && \
