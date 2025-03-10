@@ -24,7 +24,7 @@ RUN mkdir -p /etc/apt/keyrings && \
 
 RUN apt-get update && \
     apt-get install --yes \
-    docker-ce docker-ce-cli containerd.io docker-compose 
+    docker-ce docker-ce-cli containerd.io
 
 RUN rm -rf /var/lib/apt/lists/*
 
