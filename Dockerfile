@@ -12,10 +12,17 @@ RUN apt-get update && \
     apt-get install --yes \
     openssh-server \
     ca-certificates libstdc++6 ncurses-bin coreutils make gcc g++ libgcc-s1 util-linux binutils findutils \
-    docker-compose \
-    gnupg openssl iproute2 \
+    gnupg openssl iproute2 apt-transport-https lsb-release \
     grep curl git vim bash zsh \
     python3
+
+RUN mkdir -p /etc/apt/keyrings && \
+    curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
+
+RUN apt-get update && \
+    apt-get install --yes \
+    docker-ce docker-ce-cli containerd.io docker-compose 
 
 RUN rm -rf /var/lib/apt/lists/*
 
