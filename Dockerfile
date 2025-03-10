@@ -41,10 +41,6 @@ WORKDIR ${HOME_DIR}
 
 EXPOSE 22
 
-ADD ${START_SCRIPT} /usr/local/bin/${START_SCRIPT}
-
-RUN chmod u+x /usr/local/bin/${START_SCRIPT}
-
 RUN mkdir -p /run/sshd && chmod 0755 /run/sshd
 
 ADD ${SERVICES_CONFIG} /etc/supervisor/conf.d/${SERVICES_CONFIG}
