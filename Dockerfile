@@ -21,6 +21,7 @@ RUN groupadd --gid ${UID_GID} ${USER} && \
     useradd --create-home --uid ${UID_GID} --gid ${USER} --shell /bin/zsh ${USER} && \
     passwd --delete ${USER}
 
+RUN mkdir -p /etc/ssh/sshd_config.d
 ADD ${SSHD_MISC_CONFIG} /etc/ssh/sshd_config.d/${SSHD_MISC_CONFIG}
 
 WORKDIR ${HOME_DIR}
