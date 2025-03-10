@@ -5,7 +5,7 @@ set -e
 dockerd &
 
 # Start the SSH daemon in the background
-/usr/sbin/sshd -D -e &
+mkdir -p /run/sshd && chmod 0755 /run/sshd && /usr/sbin/sshd -D -e &
 
 # Wait until the Docker daemon is fully up and running
 until docker info > /dev/null 2>&1; do
