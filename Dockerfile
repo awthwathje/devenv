@@ -26,6 +26,15 @@ RUN apt-get update && \
     apt-get install --yes \
     docker-ce docker-ce-cli containerd.io
 
+ENV GO_VERSION=1.24.1
+
+RUN curl -fsSL "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" -o go.tar.gz && \
+    rm -rf /usr/local/go && \
+    tar -C /usr/local -xzf go.tar.gz && \
+    rm go.tar.gz
+
+ENV PATH=$PATH:/usr/local/go/bin
+
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN groupadd --gid ${UID_GID} ${USER} && \
