@@ -23,6 +23,9 @@ RUN groupadd --gid ${UID_GID} ${USER} && \
     useradd --create-home --uid ${UID_GID} --gid ${USER} --shell /bin/zsh ${USER} && \
     passwd --delete ${USER}
 
+RUN groupmod -g 281 docker && \
+    usermod -aG docker ${USER}
+
 ADD ${SSHD_MISC_CONFIG} /etc/ssh/sshd_config.d/${SSHD_MISC_CONFIG}
 ADD ${SSHD_KEYS_CONFIG} /etc/ssh/sshd_config.d/${SSHD_KEYS_CONFIG}
 
