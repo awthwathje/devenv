@@ -11,7 +11,7 @@ RUN apt-get update && \
     apt-get install --yes \
     openssh-server \
     ca-certificates libstdc++6 ncurses-bin coreutils make gcc g++ libgcc-s1 util-linux binutils findutils \
-    gnupg openssl \
+    gnupg openssl iproute2 \
     grep curl git vim bash zsh \
     python3
 
