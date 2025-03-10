@@ -35,8 +35,6 @@ RUN curl -fsSL "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" -o go.tar.
 
 ENV PATH="/usr/local/go/bin:${PATH}"
 
-RUN echo 'export PATH="/usr/local/go/bin:$PATH"' > /etc/profile.d/go.sh
-
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN groupadd --gid ${UID_GID} ${USER} && \
