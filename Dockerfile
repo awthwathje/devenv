@@ -28,6 +28,7 @@ WORKDIR ${HOME_DIR}
 EXPOSE 22
 
 ADD ${START_SCRIPT} /usr/local/bin/${START_SCRIPT}
+
 RUN chmod u+x /usr/local/bin/${START_SCRIPT}
 
 ENTRYPOINT ["/usr/local/bin/start.sh"]
