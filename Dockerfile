@@ -33,7 +33,7 @@ RUN curl -fsSL "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" -o go.tar.
     tar -C /usr/local -xzf go.tar.gz && \
     rm go.tar.gz
 
-ENV PATH=$PATH:/usr/local/go/bin
+ENV PATH="/usr/local/go/bin:${PATH}"
 
 RUN rm -rf /var/lib/apt/lists/*
 
