@@ -20,15 +20,13 @@ ssh-keygen -t rsa -b 4096
 Get-Content $env:USERPROFILE\.ssh\id_rsa.pub
 ```
 
-### Generate server keys
+### Server keys
 
-```sh
-ssh-keygen -A
-```
+Server host keys are generated on container build. They are automatically created in `/etc/ssh` directory.
 
 #### Store the keys in some directory (to be mounted to the container)
 
-Those server keys need to be persisted, so it's best to store them on the host and mount them to the container at run time. You can copy the generated keys to `ssh-host-keys` dir.
+Once server host keys are generated, you might want to persist them to prevent server's identity from changing across rebuilds. Move the keys into the mapped directory, `ssh-host-keys` in this example.
 
 #### Add the public client keys to the server
 
