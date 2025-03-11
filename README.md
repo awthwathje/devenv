@@ -70,7 +70,7 @@ drwxr-xr-x 1 nobody users    4 Dec 25 07:09 ..
 
 ### Docker mounts
 
- Prepare the folders: `~/ssh-host-keys` and `~/home/.ssh/authorized_keys` in the Docker host, and specify the mounts in the Docker container configuration as follows.
+The directories `/home/devenv` and `/etc/ssh/ssh-host-keys` in the container need to be mounted somewhere in the Docker host, so you need to specify the mounts as follows:
 
 | Host Path       | Container Path                    |
 |-----------------|-----------------------------------|
