@@ -26,7 +26,7 @@ Server host keys are generated on container build. They are automatically create
 
 #### Store the keys in some directory (to be mounted to the container)
 
-Once the server host keys are generated, you might want to persist them to prevent server's identity from changing across rebuilds. Move the keys into the mapped directory, `ssh-host-keys` in this example.
+Once the server host keys are generated, you might want to persist them to prevent server's identity from being changed across rebuilds. Move the keys into the mapped directory, `ssh-host-keys` in this example.
 
 #### Add the public client keys to the server
 
