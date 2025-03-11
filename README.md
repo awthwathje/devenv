@@ -30,7 +30,7 @@ Once the server host keys are generated, you might want to persist them to preve
 
 #### Add the public client keys to the server
 
-The client keys need to be propagated to `authorized_keys` on the Docker host and this file also needs to be mounted to the container at run time.
+In order to enable passwordless SSH login, the client keys need to be propagated to `authorized_keys` on the Docker host and this file also needs to be mounted to the container at run time.
 
 Copy the contents of the public key printed by [Get the client pub key](#get-the-client-pub-key) and save it into `authorized_keys` file.
 
