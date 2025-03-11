@@ -1,6 +1,6 @@
 # devenv
 
-A custom Dockerized development environment to be used with IDEs such as VS Code, etc.
+A custom Dockerized development environment to be used with IDEs such as VS Code, etc. It comes with Docker-in-Docker setup, so you need to run this container in `privileged` (that is root) mode.
 
 ## Persistent Docker host files
 
